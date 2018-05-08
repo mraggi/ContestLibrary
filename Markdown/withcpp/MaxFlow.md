@@ -24,14 +24,9 @@ struct Edge
     {}
 };
 
-struct PushRelabel
+class PushRelabel
 {
-    long N;
-    vector<vector<Edge>> G;
-    vector<long> excess;
-    vector<long> dist, active, count;
-    queue<long> Q;
-
+public:
     PushRelabel(long N)
         : N(N), G(N), excess(N), dist(N), active(N), count(2 * N)
     {}
@@ -45,6 +40,42 @@ struct PushRelabel
 
         G[to].push_back(Edge(to, from, 0, 0, G[from].size() - 1));
     }
+
+    long GetMaxFlow(long s, long t)
+    {
+        count[0] = N - 1;
+        count[N] = 1;
+        dist[s] = N;
+        active[s] = active[t] = true;
+
+        for (long i = 0; i < G[s].size(); i++)
+        {
+            excess[s] += G[s][i].cap;
+            Push(G[s][i]);
+        }
+
+        while (!Q.empty())
+        {
+            long v = Q.front();
+            Q.pop();
+            active[v] = false;
+            Discharge(v);
+        }
+
+        long totflow = 0;
+
+        for (long i = 0; i < G[s].size(); i++)
+            totflow += G[s][i].flow;
+
+        return totflow;
+    }
+
+private:
+    long N;
+    vector<vector<Edge>> G;
+    vector<long> excess;
+    vector<long> dist, active, count;
+    queue<long> Q;
 
     void Enqueue(long v)
     {
@@ -108,35 +139,6 @@ struct PushRelabel
             else
                 Relabel(v);
         }
-    }
-
-    long GetMaxFlow(long s, long t)
-    {
-        count[0] = N - 1;
-        count[N] = 1;
-        dist[s] = N;
-        active[s] = active[t] = true;
-
-        for (long i = 0; i < G[s].size(); i++)
-        {
-            excess[s] += G[s][i].cap;
-            Push(G[s][i]);
-        }
-
-        while (!Q.empty())
-        {
-            long v = Q.front();
-            Q.pop();
-            active[v] = false;
-            Discharge(v);
-        }
-
-        long totflow = 0;
-
-        for (long i = 0; i < G[s].size(); i++)
-            totflow += G[s][i].flow;
-
-        return totflow;
     }
 };
 

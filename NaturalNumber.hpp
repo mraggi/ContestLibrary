@@ -20,9 +20,15 @@ public:
     size_type size() const { return m_n; }
 
     class iterator
-        : public std::iterator<std::random_access_iterator_tag, value_type>
     {
+
     public:
+        using iterator_category = std::random_access_iterator_tag;
+        using value_type = IntType;
+        using difference_type = long long;
+        using pointer = IntType const*;
+        using reference = const IntType&;
+
         explicit iterator(IntType t = 0) : m_ID(t) {}
 
         inline iterator& operator++()

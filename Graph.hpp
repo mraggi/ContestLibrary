@@ -25,7 +25,7 @@ public:
     using size_type = long long;
 
     using Vertex = std::int64_t;
-    static constexpr Vertex INVALID_VERTEX{-1};
+    static constexpr Vertex INVALID_VERTEX = -1;
 
     using weight_t = std::int64_t;
 
