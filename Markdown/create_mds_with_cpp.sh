@@ -1,6 +1,8 @@
 #!/bin/bash
 
+mkdir tmp
+
 for f in *.md
 	do
-	python substitutebycpp.py "$f" > "withcpp/$f"
+	python substitutebycpp.py "$f" > "tmp/$f"
 done
