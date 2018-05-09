@@ -11,16 +11,15 @@ Dada una gráfica dirigida con capacidades, una fuente y un pozo, encuentra el m
 
 #include <algorithm>
 #include <iostream>
+#include <numeric>
 #include <queue>
 #include <vector>
 
-using namespace std;
-
 struct Edge
 {
-    long from, to, cap, flow, index;
-    Edge(long from, long to, long cap, long flow, long index)
-        : from(from), to(to), cap(cap), flow(flow), index(index)
+    long from, to, cap, flow, index_of_twin;
+    Edge(long from, long to, long cap, long flow, long index_of_twin)
+        : from(from), to(to), cap(cap), flow(flow), index_of_twin(index_of_twin)
     {}
 };
 
@@ -33,12 +32,12 @@ public:
 
     void AddEdge(long from, long to, long cap)
     {
-        G[from].push_back(Edge(from, to, cap, 0, G[to].size()));
+        G[from].emplace_back(from, to, cap, 0, G[to].size());
 
         if (from == to)
-            G[from].back().index++;
+            ++G[from].back().index_of_twin;
 
-        G[to].push_back(Edge(to, from, 0, 0, G[from].size() - 1));
+        G[to].emplace_back(to, from, 0, 0, G[from].size() - 1);
     }
 
     long GetMaxFlow(long s, long t)
@@ -48,10 +47,10 @@ public:
         dist[s] = N;
         active[s] = active[t] = true;
 
-        for (long i = 0; i < G[s].size(); i++)
+        for (auto& edge : G[s])
         {
-            excess[s] += G[s][i].cap;
-            Push(G[s][i]);
+            excess[s] += edge.cap;
+            Push(edge);
         }
 
         while (!Q.empty())
@@ -64,18 +63,18 @@ public:
 
         long totflow = 0;
 
-        for (long i = 0; i < G[s].size(); i++)
-            totflow += G[s][i].flow;
+        for (auto& edge : G[s])
+            totflow += edge.flow;
 
         return totflow;
     }
 
 private:
     long N;
-    vector<vector<Edge>> G;
-    vector<long> excess;
-    vector<long> dist, active, count;
-    queue<long> Q;
+    std::vector<std::vector<Edge>> G;
+    std::vector<long> excess;
+    std::vector<long> dist, active, count;
+    std::queue<long> Q;
 
     void Enqueue(long v)
     {
@@ -88,13 +87,13 @@ private:
 
     void Push(Edge& e)
     {
-        long amt = long(min(excess[e.from], long(e.cap - e.flow)));
+        long amt = std::min<long>(excess[e.from], e.cap - e.flow);
 
         if (dist[e.from] <= dist[e.to] || amt == 0)
             return;
 
         e.flow += amt;
-        G[e.to][e.index].flow -= amt;
+        G[e.to][e.index_of_twin].flow -= amt;
         excess[e.to] += amt;
         excess[e.from] -= amt;
         Enqueue(e.to);
@@ -102,35 +101,41 @@ private:
 
     void Gap(long k)
     {
-        for (long v = 0; v < N; v++)
+        for (long v = 0; v < N; ++v)
         {
             if (dist[v] < k)
                 continue;
 
-            count[dist[v]]--;
-            dist[v] = max(dist[v], N + 1);
-            count[dist[v]]++;
+            --count[dist[v]];
+            dist[v] = std::max(dist[v], N + 1);
+            ++count[dist[v]];
             Enqueue(v);
         }
     }
 
     void Relabel(long v)
     {
-        count[dist[v]]--;
+        --count[dist[v]];
         dist[v] = 2 * N;
 
-        for (long i = 0; i < G[v].size(); i++)
-            if (G[v][i].cap - G[v][i].flow > 0)
-                dist[v] = min(dist[v], dist[G[v][i].to] + 1);
+        for (auto& edge : G[v])
+        {
+            if (edge.cap - edge.flow > 0)
+                dist[v] = std::min(dist[v], dist[edge.to] + 1);
+        }
 
-        count[dist[v]]++;
+        ++count[dist[v]];
         Enqueue(v);
     }
 
     void Discharge(long v)
     {
-        for (long i = 0; excess[v] > 0 && i < G[v].size(); i++)
-            Push(G[v][i]);
+        for (auto& edge : G[v])
+        {
+            if (excess[v] <= 0)
+                break;
+            Push(edge);
+        }
 
         if (excess[v] > 0)
         {
@@ -153,7 +158,7 @@ int main()
     G.AddEdge(1, 3, 1);
     G.AddEdge(3, 4, 4);
 
-    cout << "Max flow: " << G.GetMaxFlow(0, 4) << endl;
+    std::cout << "Max flow: " << G.GetMaxFlow(0, 4) << std::endl;
 
     return 0;
 }

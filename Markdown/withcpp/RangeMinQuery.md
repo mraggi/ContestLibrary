@@ -114,7 +114,7 @@ int main()
             "15 is at: "
          << RMQ.GetMinIndex(5, 15) << " with val " << A[RMQ.GetMinIndex(5, 15)]
          << std::endl;
-    auto GRMQ = make_range_min_query(A, std::greater<int>());
+    auto GRMQ = make_range_min_query(A, std::greater<>());
     cout << "And the max value is at: " << GRMQ.GetMinIndex(5, 15)
          << " with val " << A[GRMQ.GetMinIndex(5, 15)] << endl;
 }

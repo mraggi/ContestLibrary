@@ -34,7 +34,13 @@ public:
     using size_type = long long;
 
     using Vertex = std::int64_t;
-    static constexpr Vertex INVALID_VERTEX = -1;
+
+    enum WORKAROUND_UNTIL_CPP17
+    {
+        INVALID_VERTEX = -1
+    };
+    // 	inline static constexpr Vertex INVALID_VERTEX = -1; // Uncomment with
+    // c++17
 
     using weight_t = std::int64_t;
 
@@ -217,10 +223,10 @@ public:
 
     struct Edge
     {
-        Vertex from;
-        Vertex to;
+        Vertex from{INVALID_VERTEX};
+        Vertex to{INVALID_VERTEX};
 
-        Edge() : from(INVALID_VERTEX), to(INVALID_VERTEX), m_weight(0) {}
+        Edge() : m_weight(0) {}
         Edge(Vertex f, Vertex t, weight_t w = 1) : from(f), to(t), m_weight(w)
         {}
 

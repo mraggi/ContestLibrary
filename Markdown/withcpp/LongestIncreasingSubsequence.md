@@ -87,9 +87,9 @@ int main()
     cout << "Longest increasing subsequence: "
          << longest_increasing_subsequence(A) << endl;
     cout << "Longest non-decreasing subsequence: "
-         << longest_increasing_subsequence(A, std::less_equal<int>()) << endl;
+         << longest_increasing_subsequence(A, std::less_equal<>()) << endl;
     cout << "Longest decreasing subsequence: "
-         << longest_increasing_subsequence(A, std::greater<int>()) << endl;
+         << longest_increasing_subsequence(A, std::greater<>()) << endl;
     return 0;
 }
 
