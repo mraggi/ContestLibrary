@@ -149,14 +149,14 @@ public:
 
     // Calculated all primes up to
     ll up_to() const { return m_upto; }
-    
+
     bool is_prime(ll p) const
     {
         if (p <= m_upto)
             return std::binary_search(primes.begin(), primes.end(), p);
 
         ll largest = primes.back();
-        if (p <= largest*largest)
+        if (p <= largest * largest)
             return bf_is_prime(p);
 
         ll a = FermatFactor(p);
@@ -194,7 +194,7 @@ public:
             if (a != 0)
                 F.emplace_back(p, a);
 
-            if (p*p > n)
+            if (p * p > n)
                 break;
         }
 
@@ -256,7 +256,7 @@ private:
 private:
     ll m_upto;
     std::vector<ll> primes = {2};
-    
+
     bool bf_is_prime(ll n) const
     {
         for (auto p : primes)
@@ -279,33 +279,33 @@ public:
     {
         m_phi[0] = 0;
         m_phi[1] = 1;
-        dfs_helper(P,1,0);
+        dfs_helper(P, 1, 0);
     }
-    
+
     // TODO(mraggi): only works if already calculated. Do something else if not.
-    ll operator()(ll k) 
+    ll operator()(ll k)
     {
         if (k < size())
-            return m_phi[k]; 
+            return m_phi[k];
     }
-    
+
     ll size() const { return m_phi.size(); }
 
 private:
     void dfs_helper(const PrimeFactorizer& P, ll a, ll i)
     {
         ll n = m_phi.size();
-        for ( ; i < P.size() && P[i]*a < n; ++i)
+        for (; i < P.size() && P[i] * a < n; ++i)
         {
             ll p = P[i];
             ll multiplier = p - 1;
-            if (a%p == 0)
+            if (a % p == 0)
                 multiplier = p;
-            m_phi[p*a] = multiplier*m_phi[a];
-            dfs_helper(P, p*a, i);
+            m_phi[p * a] = multiplier * m_phi[a];
+            dfs_helper(P, p * a, i);
         }
     }
-    
+
     std::vector<ll> m_phi;
 };
 

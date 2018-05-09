@@ -145,24 +145,25 @@ ll FermatFactor(ll N)
 class PrimeFactorizer
 {
 public:
-    explicit PrimeFactorizer(ll primes_up_to = 1000000)
+    explicit PrimeFactorizer(ll primes_up_to = 1000000) : m_upto(primes_up_to)
     {
-        eratosthenes_sieve(primes_up_to);
+        eratosthenes_sieve(m_upto);
     }
 
-    ll size() const { return primes.back() + 1; }
+    // Number of primes
+    ll size() const { return primes.size(); }
+
+    // Calculated all primes up to
+    ll up_to() const { return m_upto; }
 
     bool is_prime(ll p) const
     {
-        if (p < primes.back())
-        {
+        if (p <= m_upto)
             return std::binary_search(primes.begin(), primes.end(), p);
-        }
 
-        if (p <= primes.back() * primes.back())
-        {
+        ll largest = primes.back();
+        if (p <= largest * largest)
             return bf_is_prime(p);
-        }
 
         ll a = FermatFactor(p);
         return a == 1;
@@ -170,11 +171,12 @@ public:
 
     auto begin() const { return primes.begin(); }
     auto end() const { return primes.end(); }
+    ll operator[](ll index) const { return primes[index]; }
 
     const auto& Primes() const { return primes; }
 
     /// Make sure sqrt(n) <
-    /// primes.back()*primes.back(), otherwise
+    /// primes.back()^2, otherwise
     /// this could spit out a wrong factorization.
     Factorization prime_factorization(ll n) const
     {
@@ -213,10 +215,8 @@ private:
     {
         std::vector<bool> primecharfunc = {false, false, true};
         primecharfunc.resize(n + 1, true);
-        // 		for (ll i = 4; i < primecharfunc.size(); i += 2)
-        // 			primecharfunc[i] = false;
 
-        primes.reserve((1.1 * n) / log(n) + 10); // can remove this line
+        primes.reserve((1.1 * n) / std::log(n) + 10); // can remove this line
 
         ll p = 3;
         for (; p * p <= n; p += 2)
@@ -260,7 +260,9 @@ private:
     }
 
 private:
+    ll m_upto;
     std::vector<ll> primes = {2};
+
     bool bf_is_prime(ll n) const
     {
         for (auto p : primes)
@@ -279,38 +281,37 @@ private:
 class EulerPhi
 {
 public:
-    EulerPhi(const PrimeFactorizer& P) : m_phi(P.size())
+    EulerPhi(const PrimeFactorizer& P) : m_phi(P.up_to())
     {
         m_phi[0] = 0;
         m_phi[1] = 1;
-        using iter = std::vector<ll>::const_iterator;
-        using pll = std::pair<ll, iter>;
-        std::vector<pll> frontier;
-        frontier.emplace_back(1, P.begin());
+        dfs_helper(P, 1, 0);
+    }
 
-        while (!frontier.empty())
+    // TODO(mraggi): only works if already calculated. Do something else if not.
+    ll operator()(ll k)
+    {
+        if (k < size())
+            return m_phi[k];
+    }
+
+    ll size() const { return m_phi.size(); }
+
+private:
+    void dfs_helper(const PrimeFactorizer& P, ll a, ll i)
+    {
+        ll n = m_phi.size();
+        for (; i < P.size() && P[i] * a < n; ++i)
         {
-            auto t = frontier.back();
-            frontier.pop_back();
-            ll a = t.first;
-            auto prime = t.second;
-
-            for (auto it = prime; it != P.end() && (*it) * a < m_phi.size();
-                 ++it)
-            {
-                ll p = *it;
-                ll multiplier = p - 1;
-                if (a % p == 0)
-                    multiplier = p;
-                m_phi[p * a] = multiplier * m_phi[a];
-                frontier.emplace_back(p * a, it);
-            }
+            ll p = P[i];
+            ll multiplier = p - 1;
+            if (a % p == 0)
+                multiplier = p;
+            m_phi[p * a] = multiplier * m_phi[a];
+            dfs_helper(P, p * a, i);
         }
     }
 
-    ll operator()(ll k) { return m_phi[k]; }
-
-private:
     std::vector<ll> m_phi;
 };
 
