@@ -144,9 +144,6 @@ struct LPSolver
 
 int main()
 {
-
-    const int m = 4;
-    const int n = 3;
     Matrix A = {{6, -1, 0}, {-1, -5, 0}, {1, 5, 1}, {-1, -5, -1}};
     Row b = {10, -4, 5, -5};
     Row c = {1, -1, 0};
@@ -155,10 +152,10 @@ int main()
     Row x;
     DOUBLE value = solver.Solve(x);
 
-    cerr << "VALUE: " << value << endl; // VALUE: 1.29032
-    cerr << "SOLUTION:"; // SOLUTION: 1.74194 0.451613 1
+    cout << "VALUE: " << value << endl; // VALUE: 1.29032
+    cout << "SOLUTION:"; // SOLUTION: 1.74194 0.451613 1
     for (auto t : x)
-        cerr << " " << t;
-    cerr << endl;
+        cout << ' ' << t;
+    cout << endl;
     return 0;
 }
