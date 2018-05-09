@@ -8,3 +8,9 @@ Run ./build_book.sh to build the book after modifying a source file.
 
 Requires:
 pandoc
+
+
+## Thanks to:
+- All my students
+- Jaehyun Park for releasing his code for simplex and max flow with MIT License
+- ENES Morelia
