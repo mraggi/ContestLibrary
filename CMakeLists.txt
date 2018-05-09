@@ -6,7 +6,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 set(CMAKE_BUILD_TYPE Release)
 
-
 add_executable(disjoint_intervals DisjointIntervals.cpp)
 add_executable(disjoint_sets DisjointSets.cpp)
 add_executable(number_theory NumberTheory.cpp)

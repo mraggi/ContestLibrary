@@ -147,15 +147,9 @@ int main()
 
     const int m = 4;
     const int n = 3;
-    DOUBLE _A[m][n] = {{6, -1, 0}, {-1, -5, 0}, {1, 5, 1}, {-1, -5, -1}};
-    DOUBLE _b[m] = {10, -4, 5, -5};
-    DOUBLE _c[n] = {1, -1, 0};
-
-    Matrix A(m);
-    Row b(_b, _b + m);
-    Row c(_c, _c + n);
-    for (int i = 0; i < m; i++)
-        A[i] = Row(_A[i], _A[i] + n);
+    Matrix A = {{6, -1, 0}, {-1, -5, 0}, {1, 5, 1}, {-1, -5, -1}};
+    Row b = {10, -4, 5, -5};
+    Row c = {1, -1, 0};
 
     LPSolver solver(A, b, c);
     Row x;
@@ -163,8 +157,8 @@ int main()
 
     cerr << "VALUE: " << value << endl; // VALUE: 1.29032
     cerr << "SOLUTION:"; // SOLUTION: 1.74194 0.451613 1
-    for (size_t i = 0; i < x.size(); i++)
-        cerr << " " << x[i];
+    for (auto t : x)
+        cerr << " " << t;
     cerr << endl;
     return 0;
 }
