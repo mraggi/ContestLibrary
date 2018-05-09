@@ -155,14 +155,14 @@ public:
 
     // Calculated all primes up to
     ll up_to() const { return m_upto; }
-
+    
     bool is_prime(ll p) const
     {
         if (p <= m_upto)
             return std::binary_search(primes.begin(), primes.end(), p);
 
         ll largest = primes.back();
-        if (p <= largest * largest)
+        if (p <= largest*largest)
             return bf_is_prime(p);
 
         ll a = FermatFactor(p);
@@ -200,7 +200,7 @@ public:
             if (a != 0)
                 F.emplace_back(p, a);
 
-            if (p * p > n)
+            if (p*p > n)
                 break;
         }
 
@@ -213,25 +213,27 @@ public:
 private:
     void eratosthenes_sieve(ll n)
     {
-        std::vector<bool> primecharfunc = {false, false, true};
-        primecharfunc.resize(n + 1, true);
+        // primecharfunc[a] == true means 2*a+1 is prime
+        std::vector<bool> primecharfunc = {false}; 
+        primecharfunc.resize(n/2 + 1, true);
 
         primes.reserve((1.1 * n) / std::log(n) + 10); // can remove this line
 
-        ll p = 3;
-        for (; p * p <= n; p += 2)
+        ll i = 1;
+        ll p = 3; // p = 2*i + 1
+        for ( ; p*p <= n; ++i, p += 2)
         {
-            if (primecharfunc[p])
+            if (primecharfunc[i])
             {
                 primes.emplace_back(p);
-                for (ll i = 3 * p; i <= n; i += 2 * p)
-                    primecharfunc[i] = false;
+                for (ll j = i+p; j < primecharfunc.size(); j += p)
+                    primecharfunc[j] = false;
             }
         }
 
-        for (; p < n; p += 2)
+        for ( ; p < n; p += 2,++i)
         {
-            if (primecharfunc[p])
+            if (primecharfunc[i])
                 primes.emplace_back(p);
         }
     }
@@ -262,7 +264,7 @@ private:
 private:
     ll m_upto;
     std::vector<ll> primes = {2};
-
+    
     bool bf_is_prime(ll n) const
     {
         for (auto p : primes)
@@ -276,7 +278,7 @@ private:
 
         return true;
     }
-};
+}; // end class PrimeFactorizer
 
 class EulerPhi
 {

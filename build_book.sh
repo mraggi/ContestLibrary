@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./clang-format-helper.sh
+#./clang-format-helper.sh
 cd Markdown
 ./create_mds_with_cpp.sh
 cd withcpp
