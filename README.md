@@ -10,6 +10,23 @@ Requires:
 pandoc
 
 
+## TODO:
+
+### Already programmed, needs cleanup, etc.
+- Geometry: Points, lines, segments, convex hulls, etc.
+- Sequences: binomial, stirling numbers, etc.
+- Lagrange Interpolation
+- Polynomials, maybe fourier transforms
+- Simple matrices
+- Splay trees ("ropes")
+- String stuff: Suffix trees, Rabin Karp, etc.
+
+### Not yet programmed:
+- Segment Trees
+- Fenwick Trees
+- KD trees
+- ???
+
 ## Thanks to:
 - All my students
 - Jaehyun Park for releasing his code for simplex and max flow with MIT License
