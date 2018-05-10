@@ -16,9 +16,9 @@
 using namespace std;
 using pii = std::array<int, 2>;
 
-const long loo = std::numeric_limits<long>::max() / 2;
-const int oo = std::numeric_limits<int>::max() / 2;
-const short soo = std::numeric_limits<short>::max() / 2;
+const long loo = std::numeric_limits<long>::max()/2;
+const int oo = std::numeric_limits<int>::max()/2;
+const short soo = std::numeric_limits<short>::max()/2;
 
 template <class T>
 std::ostream& operator<<(std::ostream& os, const vector<T>& rhs)
@@ -72,10 +72,10 @@ long gcd(long a, long b)
 {
     if (b == 0)
         return a;
-    return gcd(b, a % b);
+    return gcd(b, a%b);
 }
 
-long lcm(long a, long b) { return a * b / gcd(a, b); }
+long lcm(long a, long b) { return a*b/gcd(a, b); }
 
 long gcd(const vector<long>& A)
 {

@@ -97,7 +97,7 @@ std::ostream& operator<<(std::ostream& os, const Factorization& F)
             os << "^" << f.a;
 
         if (i + 1 != F.size())
-            os << " * ";
+            os << "*";
 
         ++i;
     }
@@ -109,7 +109,7 @@ std::ostream& operator<<(std::ostream& os, const Factorization& F)
 ll integral_sqrt(ll n)
 {
     ll t = std::round(std::sqrt(n));
-    if (t * t > n)
+    if (t*t > n)
         return t - 1;
 
     return t;
@@ -118,19 +118,19 @@ ll integral_sqrt(ll n)
 bool is_square(ll N)
 {
     ll t = std::round(std::sqrt(N));
-    return t * t == N;
+    return t*t == N;
 }
 
 ll FermatFactor(ll N)
 {
-    assert(N % 2 == 1);
+    assert(N%2 == 1);
     ll a = std::ceil(std::sqrt(N));
-    ll b2 = a * a - N;
+    ll b2 = a*a - N;
 
     while (!is_square(b2))
     {
         ++a;
-        b2 = a * a - N;
+        b2 = a*a - N;
     }
 
     return a - integral_sqrt(b2);
@@ -149,7 +149,7 @@ public:
 
     // Calculated all primes up to
     ll up_to() const { return m_upto; }
-    
+
     bool is_prime(ll p) const
     {
         if (p <= m_upto)
@@ -208,24 +208,24 @@ private:
     void eratosthenes_sieve(ll n)
     {
         // primecharfunc[a] == true means 2*a+1 is prime
-        std::vector<bool> primecharfunc = {false}; 
+        std::vector<bool> primecharfunc = {false};
         primecharfunc.resize(n/2 + 1, true);
 
-        primes.reserve((1.1 * n) / std::log(n) + 10); // can remove this line
+        primes.reserve((1.1*n)/std::log(n) + 10); // can remove this line
 
         ll i = 1;
         ll p = 3; // p = 2*i + 1
-        for ( ; p*p <= n; ++i, p += 2)
+        for (; p*p <= n; ++i, p += 2)
         {
             if (primecharfunc[i])
             {
                 primes.emplace_back(p);
-                for (ll j = i+p; j < primecharfunc.size(); j += p)
+                for (ll j = i + p; j < primecharfunc.size(); j += p)
                     primecharfunc[j] = false;
             }
         }
 
-        for ( ; p < n; p += 2,++i)
+        for (; p < n; p += 2, ++i)
         {
             if (primecharfunc[i])
                 primes.emplace_back(p);
@@ -236,13 +236,13 @@ private:
     // is already a factor in something.
     void fermat_factorization(ll n, Factorization& F)
     {
-        assert(n % 2 == 1);
+        assert(n%2 == 1);
         assert(n > 5);
         ll a = FermatFactor(n);
 
-        ll b = n / a;
+        ll b = n/a;
 
-        assert(a * b == n);
+        assert(a*b == n);
 
         if (a == 1)
         {
@@ -258,15 +258,15 @@ private:
 private:
     ll m_upto;
     std::vector<ll> primes = {2};
-    
+
     bool bf_is_prime(ll n) const
     {
         for (auto p : primes)
         {
-            if (p * p > n)
+            if (p*p > n)
                 break;
 
-            if (n % p == 0)
+            if (n%p == 0)
                 return false;
         }
 
@@ -284,12 +284,10 @@ public:
         dfs_helper(P, 1, 0);
     }
 
-    // TODO(mraggi): only works if already calculated. Do something else if not.
-    ll operator()(ll k)
-    {
-        if (k < size())
-            return m_phi[k];
-    }
+    // TODO(mraggi): only works if already calculated.
+    ll operator()(ll k) const { return m_phi[k]; }
+
+    ll operator[](ll k) const { return m_phi[k]; }
 
     ll size() const { return m_phi.size(); }
 
@@ -297,14 +295,14 @@ private:
     void dfs_helper(const PrimeFactorizer& P, ll a, ll i)
     {
         ll n = m_phi.size();
-        for (; i < P.size() && P[i] * a < n; ++i)
+        for (; i < P.size() && P[i]*a < n; ++i)
         {
             ll p = P[i];
             ll multiplier = p - 1;
-            if (a % p == 0)
+            if (a%p == 0)
                 multiplier = p;
-            m_phi[p * a] = multiplier * m_phi[a];
-            dfs_helper(P, p * a, i);
+            m_phi[p*a] = multiplier*m_phi[a];
+            dfs_helper(P, p*a, i);
         }
     }
 

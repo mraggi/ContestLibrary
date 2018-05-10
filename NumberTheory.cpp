@@ -30,7 +30,7 @@ T pow(T a, unsigned long n)
 
     while (n > 0)
     {
-        if (n % 2 == 1)
+        if (n%2 == 1)
             r *= a;
 
         n /= 2;
@@ -46,7 +46,7 @@ ll pow_mod(ll a, unsigned long n, const ll mod)
     reduce_mod(a, mod);
     while (n > 0)
     {
-        if (n % 2 == 1)
+        if (n%2 == 1)
         {
             r *= a;
             reduce_mod(r, mod);
@@ -64,14 +64,14 @@ ll gcd(ll a, ll b)
 {
     while (b != 0)
     {
-        ll r = a % b;
+        ll r = a%b;
         a = b;
         b = r;
     }
     return a;
 }
 
-ll lcm(ll a, ll b) { return a * b / gcd(a, b); }
+ll lcm(ll a, ll b) { return a*b/gcd(a, b); }
 
 struct linearcomb
 {
@@ -94,11 +94,11 @@ linearcomb gcd_extended(ll a, ll b)
         a = b;
         b = K.rem;
 
-        sc = sa - K.quot * sb;
+        sc = sa - K.quot*sb;
         sa = sb;
         sb = sc;
 
-        tc = ta - K.quot * tb;
+        tc = ta - K.quot*tb;
         ta = tb;
         tb = tc;
     } while (b != 0);
@@ -121,7 +121,7 @@ ll InterpretBaseK(ll k, const std::vector<IntType>& bla)
 
     for (auto it = bla.rbegin(); it != bla.rend(); ++it)
     {
-        suma += power * static_cast<IntType>(*it);
+        suma += power*static_cast<IntType>(*it);
         power *= k;
     }
 
@@ -134,7 +134,7 @@ std::vector<int> NumberBaseB(ll n, int b)
 
     while (n)
     {
-        toReturn.push_back(n % b);
+        toReturn.push_back(n%b);
         n /= b;
     }
 

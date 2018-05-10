@@ -62,12 +62,12 @@ struct LPSolver
 
     void Pivot(int r, int s)
     {
-        double inv = 1.0 / D[r][s];
+        double inv = 1.0/D[r][s];
         for (int i = 0; i < m + 2; i++)
             if (i != r)
                 for (int j = 0; j < n + 2; j++)
                     if (j != s)
-                        D[i][j] -= D[r][j] * D[i][s] * inv;
+                        D[i][j] -= D[r][j]*D[i][s]*inv;
         for (int j = 0; j < n + 2; j++)
             if (j != s)
                 D[r][j] *= inv;
@@ -99,8 +99,8 @@ struct LPSolver
             {
                 if (D[i][s] < EPS)
                     continue;
-                if (r == -1 || D[i][n + 1] / D[i][s] < D[r][n + 1] / D[r][s] ||
-                    ((D[i][n + 1] / D[i][s]) == (D[r][n + 1] / D[r][s]) &&
+                if (r == -1 || D[i][n + 1]/D[i][s] < D[r][n + 1]/D[r][s] ||
+                    ((D[i][n + 1]/D[i][s]) == (D[r][n + 1]/D[r][s]) &&
                      B[i] < B[r]))
                     r = i;
             }

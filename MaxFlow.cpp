@@ -19,7 +19,7 @@ class PushRelabel
 {
 public:
     PushRelabel(long N)
-        : N(N), G(N), excess(N), dist(N), active(N), count(2 * N)
+        : N(N), G(N), excess(N), dist(N), active(N), count(2*N)
     {}
 
     void AddEdge(long from, long to, long cap)
@@ -108,7 +108,7 @@ private:
     void Relabel(long v)
     {
         --count[dist[v]];
-        dist[v] = 2 * N;
+        dist[v] = 2*N;
 
         for (auto& edge : G[v])
         {

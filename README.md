@@ -12,6 +12,8 @@ pandoc
 
 ## TODO:
 
+First, we need unit tests. Everything has been unit-tested, but in other projects.
+
 ### Already programmed, needs cleanup, etc.
 - Geometry: Points, lines, segments, convex hulls, etc.
 - Sequences: binomial, stirling numbers, etc.
@@ -29,5 +31,8 @@ pandoc
 
 ## Thanks to:
 - All my students
-- Jaehyun Park for releasing his code for simplex and max flow with MIT License
 - ENES Morelia
+- Dr. Jaehyun Park, for releasing his code (for simplex and max flow) with MIT License
+
+## Contributing
+We welcome contributions! We value clean, modern C++ Object Oriented code, so don't use C-style code,  macros, etc. Don't worry about formatting (use whatever style you like), since we use clang-format and clang-tidy before commiting anything.

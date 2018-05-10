@@ -17,7 +17,7 @@ auto longest_increasing_subsequence(const std::vector<T>& X,
     // there is a subsequence of length k ending
     // at X[i]. Note that M will be increasing.
     std::vector<PII> M(2);
-    M.reserve((n + 2) / 2);
+    M.reserve((n + 2)/2);
 
     // P[i] = parent of i.
     std::vector<int> P(n);
