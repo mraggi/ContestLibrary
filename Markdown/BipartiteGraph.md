@@ -1,4 +1,4 @@
-# BipartiteGraph
+## Bipartite Graph
 
 Clase que representa un grafo bipartito. Por sí solo no hace nada.
 

@@ -1,4 +1,4 @@
-# Linear optimization (Linear Programming) simplex
+## Linear Optimization (simplex)
 
 **NO ESCRITO POR MI**.
 

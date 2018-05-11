@@ -1,4 +1,4 @@
-# Números Naturales
+## Natural Numbers
 
 Clase muy simple para iterar en el rango $n=\{0,1,...,n-1\}$. Otras clases la
 utilizan.

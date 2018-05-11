@@ -1,4 +1,4 @@
-# Range Minimum Query
+## Range Minimum Query
 
 Dada una lista, permite preprocesarla para poder contestar preguntas de tipo
 "¿Cuál es el índice con el valor mínimo en el rango [L,R)?"

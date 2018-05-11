@@ -39,6 +39,9 @@ def replace_include_by_file(txt):
         if (ext == "cpp"):
             txt += open_cpp(name_no_ext)
             #print("MANAGED TO GET CPP WORKING!")
+        #print("TXT = \n",txt,"\n\n\n\n\n----------------------------------------")
+        #print(match[5])
+        #print("------------------------------")
         txt += match[5]
         return txt
     except:

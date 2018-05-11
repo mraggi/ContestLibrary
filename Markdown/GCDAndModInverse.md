@@ -1,5 +1,4 @@
-
-# Teoría de Números
+## Teoría de Números
 
 Tenemos las siguientes funciones:
 

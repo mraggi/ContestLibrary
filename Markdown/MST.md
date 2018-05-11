@@ -1,4 +1,4 @@
-# Árbol Generador de Peso Mínimo (MST)
+## Árbol Generador de Peso Mínimo (MST)
 
 Dado un grafo, encuentra el árbol generador de peso mínimo.
 

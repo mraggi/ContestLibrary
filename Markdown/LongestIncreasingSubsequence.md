@@ -1,4 +1,4 @@
-# Longest Increasing Subsequence
+## Longest Increasing Subsequence
 
 Dada una lista, encuentra la subsecuencia creciente más larga. Puede configurarse qué significa "creciente". Ver ejemplos.
 

@@ -1,4 +1,4 @@
-# Graph
+## Graph
 
 Clase que representa un grafo. Por sí solo no hace nada.
 

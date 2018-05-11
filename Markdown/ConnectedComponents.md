@@ -1,4 +1,4 @@
-# Connected Components
+## Connected Components
 
 Encuentra las componentes conexas de un grafo. Regresa un vector cuyo $i$-ésimo valor es la componente conexa a la que pertence el vértice $i$.
 

@@ -1,4 +1,4 @@
-# Algoritmos básicos en árboles.
+## Tree Algorithms
 
 Funciones de utilidad para cuando un grafo es árbol. La función `set_root`
 regresa un vector con el padre de cada vértice, (-1 es el padre de la raíz).

@@ -1,5 +1,4 @@
-
-# Disjoint Intervals
+## Disjoint Intervals
 
 Disjoint Intervals es una estructura de datos que representa una unión de intervalos  
 cerrado-abiertos disjuntos de $\mathbb{R}$.

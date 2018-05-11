@@ -1,4 +1,4 @@
-# Números primos y factorizaciones en primos
+## Números primos y factorizar
 
 Funciones para encontrar la lista de los primeros $k$ primos y para factorizar números. Incluye la función $\phi$ de Euler, definida como sigue: $\phi(n):=$ cantidad de primos relativos con $n$ menores o iguales a $n$. 
 

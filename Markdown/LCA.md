@@ -1,4 +1,4 @@
-# Lowest Common Ancestors
+## Lowest Common Ancestors
 
 Una clase que, dado un árbol, puede responder a la pregunta "¿quién es el ancestro común más cercano de dos vértices $u$ y $v$?" rápidamente.
 

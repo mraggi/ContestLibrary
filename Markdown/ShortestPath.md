@@ -1,4 +1,4 @@
-# Shortest Paths
+## Shortest Paths
 
 Dado un grafo y un vértice inicial, encuentra el camino de menor peso a un objetivo.
 

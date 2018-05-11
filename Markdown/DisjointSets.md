@@ -1,4 +1,4 @@
-# Disjoint Sets
+## Disjoint Sets
 
 Disjoint sets es una estructura de datos que permite, muy rápidamente, pegar elementos. Tiene heurística de compresión.
 
