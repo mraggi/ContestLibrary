@@ -4,7 +4,8 @@ A collection of useful algorithms to use in contests such as the ACM ICPC, hacke
 
 See [the printable booklet.](https://github.com/mraggi/ContestLibrary/blob/master/Markdown/OneForAll.pdf) 
 
-Run ./build_book.sh to build the book after modifying a source file.
+Run ./build_book.sh to build the book after modifying a source file. Note that some processing takes place, such a removing the "inline" keyword from .hpp files, as it is not needed in contests, where a single cpp file is submitted.
+
 
 Requires:
 - pandoc
