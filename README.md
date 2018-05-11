@@ -10,6 +10,7 @@ Requires:
 - pandoc
 - clang and clang-format
 - fd
+- pdfunite
 - ?
 
 ## TODO:
