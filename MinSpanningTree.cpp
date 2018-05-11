@@ -9,12 +9,21 @@
 using Vertex = Graph::Vertex;
 using Edge = Graph::Edge;
 
-struct by_reverse_weight
+struct by_reverse_weight // for prim
 {
     template <class T>
     bool operator()(const T& a, const T& b)
     {
         return a.weight() > b.weight();
+    }
+};
+
+struct by_weight // for kruskal
+{
+    template <class T>
+    bool operator()(const T& a, const T& b)
+    {
+        return a.weight() < b.weight();
     }
 };
 
@@ -30,7 +39,7 @@ std::vector<Graph::Edge> prim(const Graph& G)
 
     T.reserve(num_tree_edges);
 
-    std::vector<char> explored(n, false);
+    std::vector<bool> explored(n, false);
 
     std::priority_queue<Edge, std::vector<Edge>, by_reverse_weight>
       EdgesToExplore;
@@ -75,13 +84,7 @@ std::vector<Graph::Edge> kruskal(const Graph& G)
 
     auto E = G.edges();
 
-    std::sort(E.begin(), E.end(), [](const Edge& a, const Edge& b) {
-        if (a.weight() != b.weight())
-            return a.weight() < b.weight();
-        if (a.from != b.from)
-            return a.from < b.from;
-        return a.to < b.to;
-    });
+    std::sort(E.begin(), E.end(), by_weight{});
 
     disjoint_sets D(G.num_vertices());
 

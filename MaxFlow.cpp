@@ -1,5 +1,7 @@
-// This program was written by jaehyunp and taken from:
-// https://github.com/jaehyunp/stanfordacm/blob/master/code/
+// This program was written by jaehyunp and distributed under the MIT license.
+// Taken from: https://github.com/jaehyunp/stanfordacm/blob/master/code/
+
+// It has been slightly modified (modernized to C++, mainly) by mraggi
 
 #include <algorithm>
 #include <iostream>

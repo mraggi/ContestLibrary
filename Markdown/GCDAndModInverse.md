@@ -21,11 +21,14 @@ Además, hay funciones para convertir enteros de una base a otra.
 ```txt
 modulo(-37,10) = 3
 7^1000 (mod 5) = 1
-gcd(30,55) = 5
+
+gcd(30,55) = 5 = 30*2 + 55*-1
 lcm(30,55) = 330
+
 1/7 (mod 9) = 4
-10 in base 2: 1 0 1 0 
+
+4021_{5} = 511_{10}
+10 in base 2: 0 1 0 1 
 100 in base 7: 2 0 2 
-1204_{5} = 179
 ```
 

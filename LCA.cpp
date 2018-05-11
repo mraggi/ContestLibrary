@@ -21,7 +21,7 @@ public:
         for (auto v : G.vertices())
             A[v][0] = parents[v];
 
-        for (int i = 1; i < log_height(); ++i)
+        for (int i = 2; i < log_height(); ++i)
         {
             for (auto v : G.vertices())
             {
@@ -52,14 +52,14 @@ public:
             }
         }
 
-        return A[u][0];
+        return A[u][0]; // which is = A[v][0]
     }
 
     const std::vector<std::vector<Vertex>>& Ancestors() const { return A; }
-    const auto& Level() const { return L; }
+    const auto& Levels() const { return L; }
 
 private:
-    // L[v] is the level of vertex v
+    // L[v] is the level (distance to root) of vertex v
     std::vector<int> L;
 
     // A[v][i] is the 2^i ancestor of vertex v
@@ -70,25 +70,18 @@ private:
     Vertex AncestorAtLevel(Vertex u, int lvl) const
     {
         int d = L[u] - lvl;
+        assert(d >= 0);
+
         while (d > 0)
         {
             int h = std::log2(d);
             u = A[u][h];
             d -= (1 << h);
         }
+
         return u;
     }
 };
-
-using namespace std;
-
-template <class T>
-std::ostream& operator<<(std::ostream& os, const std::vector<T>& A)
-{
-    for (const auto& x : A)
-        os << x << ' ';
-    return os;
-}
 
 int main()
 {
@@ -100,8 +93,8 @@ int main()
 
     LCA lca(tree, 1);
 
-    cout << "LCA of 0 and 4: " << lca.FindLCA(0, 4) << endl;
-    cout << "LCA of 3 and 4: " << lca.FindLCA(3, 4) << endl;
+    std::cout << "LCA of 0 and 4: " << lca.FindLCA(0, 4) << std::endl;
+    std::cout << "LCA of 3 and 4: " << lca.FindLCA(3, 4) << std::endl;
 
     return 0;
 }

@@ -10,6 +10,7 @@ class disjoint_sets
 public:
     using size_type = std::int64_t;
     using index_type = std::int64_t;
+
     explicit disjoint_sets(index_type n) : parent(n), m_num_components(n)
     {
         std::iota(parent.begin(), parent.end(), 0L);
@@ -39,10 +40,9 @@ public:
     {
         index_type ra = find_root(a);
         index_type rb = set_parent(b, ra);
+
         if (ra != rb)
-        {
             --m_num_components;
-        }
     }
 
     bool are_in_same_connected_component(index_type a, index_type b)

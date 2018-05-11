@@ -7,8 +7,10 @@ See [the printable booklet.](https://github.com/mraggi/ContestLibrary/blob/maste
 Run ./build_book.sh to build the book after modifying a source file.
 
 Requires:
-pandoc
-
+- pandoc
+- clang and clang-format
+- fd
+- ?
 
 ## TODO:
 

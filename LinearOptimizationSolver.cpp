@@ -1,5 +1,7 @@
-// This program was written by jaehyunp and taken from:
-// https://github.com/jaehyunp/stanfordacm/blob/master/code/Simplex.cc
+// This program was written by jaehyunp and distributed under the MIT license.
+// Taken from: https://github.com/jaehyunp/stanfordacm/blob/master/code/
+
+// It has been slightly modified (modernized to C++, mainly) by mraggi
 
 // Two-phase simplex algorithm for solving linear programs of the form
 //
@@ -26,7 +28,7 @@
 
 using namespace std;
 
-using DOUBLE = long double;
+using DOUBLE = long double; // change to double to trade accuracy for speed.
 using Row = vector<DOUBLE>;
 using Matrix = vector<Row>;
 using VI = vector<int>;
@@ -42,20 +44,27 @@ struct LPSolver
     LPSolver(const Matrix& A, const Row& b, const Row& c)
         : m(b.size()), n(c.size()), N(n + 1), B(m), D(m + 2, Row(n + 2))
     {
-        for (int i = 0; i < m; i++)
-            for (int j = 0; j < n; j++)
+        for (int i = 0; i < m; ++i)
+        {
+            for (int j = 0; j < n; ++j)
+            {
                 D[i][j] = A[i][j];
-        for (int i = 0; i < m; i++)
+            }
+        }
+
+        for (int i = 0; i < m; ++i)
         {
             B[i] = n + i;
             D[i][n] = -1;
             D[i][n + 1] = b[i];
         }
-        for (int j = 0; j < n; j++)
+
+        for (int j = 0; j < n; ++j)
         {
             N[j] = j;
             D[m][j] = -c[j];
         }
+
         N[n] = -1;
         D[m + 1][n] = 1;
     }
@@ -63,17 +72,27 @@ struct LPSolver
     void Pivot(int r, int s)
     {
         double inv = 1.0/D[r][s];
-        for (int i = 0; i < m + 2; i++)
+
+        for (int i = 0; i < m + 2; ++i)
+        {
             if (i != r)
-                for (int j = 0; j < n + 2; j++)
+            {
+                for (int j = 0; j < n + 2; ++j)
+                {
                     if (j != s)
                         D[i][j] -= D[r][j]*D[i][s]*inv;
-        for (int j = 0; j < n + 2; j++)
+                }
+            }
+        }
+
+        for (int j = 0; j < n + 2; ++j)
             if (j != s)
                 D[r][j] *= inv;
-        for (int i = 0; i < m + 2; i++)
+
+        for (int i = 0; i < m + 2; ++i)
             if (i != r)
                 D[i][s] *= -inv;
+
         D[r][s] = inv;
         swap(B[r], N[s]);
     }
@@ -84,7 +103,7 @@ struct LPSolver
         while (true)
         {
             int s = -1;
-            for (int j = 0; j <= n; j++)
+            for (int j = 0; j <= n; ++j)
             {
                 if (phase == 2 && N[j] == -1)
                     continue;
@@ -92,10 +111,12 @@ struct LPSolver
                     (D[x][j] == D[x][s] && N[j] < N[s]))
                     s = j;
             }
+
             if (D[x][s] > -EPS)
                 return true;
+
             int r = -1;
-            for (int i = 0; i < m; i++)
+            for (int i = 0; i < m; ++i)
             {
                 if (D[i][s] < EPS)
                     continue;
@@ -104,8 +125,10 @@ struct LPSolver
                      B[i] < B[r]))
                     r = i;
             }
+
             if (r == -1)
                 return false;
+
             Pivot(r, s);
         }
     }
@@ -113,31 +136,44 @@ struct LPSolver
     DOUBLE Solve(Row& x)
     {
         int r = 0;
-        for (int i = 1; i < m; i++)
+        for (int i = 1; i < m; ++i)
+        {
             if (D[i][n + 1] < D[r][n + 1])
                 r = i;
+        }
+
         if (D[r][n + 1] < -EPS)
         {
             Pivot(r, n);
+
             if (!Simplex(1) || D[m + 1][n + 1] < -EPS)
                 return -numeric_limits<DOUBLE>::infinity();
-            for (int i = 0; i < m; i++)
+
+            for (int i = 0; i < m; ++i)
+            {
                 if (B[i] == -1)
                 {
                     int s = -1;
-                    for (int j = 0; j <= n; j++)
+                    for (int j = 0; j <= n; ++j)
                         if (s == -1 || D[i][j] < D[i][s] ||
                             (D[i][j] == D[i][s] && N[j] < N[s]))
                             s = j;
                     Pivot(i, s);
                 }
+            }
         }
+
         if (!Simplex(2))
             return numeric_limits<DOUBLE>::infinity();
+
         x = Row(n);
-        for (int i = 0; i < m; i++)
+
+        for (int i = 0; i < m; ++i)
+        {
             if (B[i] < n)
                 x[B[i]] = D[i][n + 1];
+        }
+
         return D[m][n + 1];
     }
 };

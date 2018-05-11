@@ -22,7 +22,8 @@ T modulo(T a, const U mod)
     return a;
 }
 
-// Can do it for any class that has
+// calculates a^n efficiently. Mostly like std::pow.
+// Can do it for any class that has operator*defined!
 template <class T = ll, T identity = 1>
 T pow(T a, unsigned long n)
 {
@@ -40,6 +41,7 @@ T pow(T a, unsigned long n)
     return r;
 }
 
+// a^n (mod mod)
 ll pow_mod(ll a, unsigned long n, const ll mod)
 {
     ll r = 1;
@@ -80,12 +82,13 @@ struct linearcomb
     ll y; // second coefficient
 };
 
+// pseudocode taken from wikipedia
 linearcomb gcd_extended(ll a, ll b)
 {
     if (b == 0)
         return {a, 1LL, 0LL};
 
-    ll sa = 1, sb = 0, ta = 0, tb = 1, sc, tc;
+    ll sa = 1, sb = 0, sc, ta = 0, tb = 1, tc;
 
     do
     {
@@ -113,33 +116,34 @@ ll mod_inverse(ll a, const ll n)
     return x;
 }
 
+// digits[i] = coefficient of b^i
 template <class IntType>
-ll InterpretBaseK(ll k, const std::vector<IntType>& bla)
+ll ReadNumberInBaseB(ll b, const std::vector<IntType>& digits)
 {
     ll suma = 0;
     ll power = 1;
 
-    for (auto it = bla.rbegin(); it != bla.rend(); ++it)
+    for (ll d : digits)
     {
-        suma += power*static_cast<IntType>(*it);
-        power *= k;
+        suma += power*d;
+        power *= b;
     }
 
     return suma;
 }
 
-std::vector<int> NumberBaseB(ll n, int b)
+// Does NOT reverse the digits. add std::reverse at end if desired.
+std::vector<int> WriteNumberInBaseB(ll n, int b)
 {
-    std::vector<int> toReturn;
+    std::vector<int> digits;
 
     while (n)
     {
-        toReturn.push_back(n%b);
+        digits.push_back(n%b);
         n /= b;
     }
 
-    std::reverse(toReturn.begin(), toReturn.end());
-    return toReturn;
+    return digits;
 }
 
 using namespace std;
@@ -165,9 +169,9 @@ int main()
     cout << "\n1/7 (mod 9) = " << mod_inverse(7, 9) << endl;
 
     std::vector<int> V = {1, 2, 0, 4};
-    cout << "\n1204_{5} = " << InterpretBaseK(5, V) << endl;
-    cout << "10 in base 2: " << NumberBaseB(10, 2) << endl;
-    cout << "100 in base 7: " << NumberBaseB(100, 7) << endl;
+    cout << "\n4021_{5} = " << ReadNumberInBaseB(5, V) << "_{10}" << endl;
+    cout << "10 in base 2: " << WriteNumberInBaseB(10, 2) << endl;
+    cout << "100 in base 7: " << WriteNumberInBaseB(100, 7) << endl;
 
     return 0;
 }

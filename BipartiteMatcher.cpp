@@ -16,6 +16,7 @@ public:
         Augment(G);
     }
 
+    // MatchX(x) returns the matched vertex to x (-1 if none).
     Vertex MatchX(Vertex x) const { return m_Xmatches[x]; }
     Vertex MatchY(Vertex y) const { return m_Ymatches[y]; }
 
@@ -53,6 +54,7 @@ private:
                     break;
                 }
             }
+
             if (m_Xmatches[x] < 0)
                 m_unmatched_in_X.emplace_back(x);
         }
@@ -66,12 +68,14 @@ private:
 
         while (num_without_augment < m_unmatched_in_X.size())
         {
+            // Imagine this a circular buffer.
             if (it == m_unmatched_in_X.end())
-                it =
-                  m_unmatched_in_X.begin(); // Imagine this a circular buffer.
+                it = m_unmatched_in_X.begin();
 
             if (FindAugmentingPath(G, *it))
             {
+                // The following two lines erase it quickly by replacing it with
+                // the last element of m_unmatched_in_X
                 *it = m_unmatched_in_X.back();
                 m_unmatched_in_X.pop_back();
                 num_without_augment = 0;

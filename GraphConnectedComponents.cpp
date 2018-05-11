@@ -4,6 +4,7 @@
 
 using Vertex = Graph::Vertex;
 
+// connected_components(G)[i] = connected component of the i-th vertex.
 std::vector<int> connected_components(const Graph& G)
 {
     auto n = G.num_vertices();
@@ -17,26 +18,29 @@ std::vector<int> connected_components(const Graph& G)
 
         std::stack<Vertex> frontier;
         frontier.emplace(v);
+
         while (!frontier.empty())
         {
             auto p = frontier.top();
             frontier.pop();
+
             if (components[p] != -1)
                 continue;
+
             components[p] = current_component;
+
             for (auto u : G.neighbors(p))
             {
                 if (components[u] == -1)
                     frontier.emplace(u);
             }
         }
+
         ++current_component;
     }
 
     return components;
 }
-
-using namespace std;
 
 template <class T>
 std::ostream& operator<<(std::ostream& os, const std::vector<T>& A)

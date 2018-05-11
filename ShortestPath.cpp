@@ -14,16 +14,16 @@ const auto INF = std::numeric_limits<Distance>::max();
 
 // Used by both A* and Dijkstra
 template <class Path = std::deque<Graph::Neighbor>>
-inline Path PathFromParentsAndDistances(Vertex origin,
-                                        Vertex destination,
-                                        const std::vector<Distance>& distance,
-                                        const std::vector<Vertex>& parent)
+inline Path PathFromParents(Vertex origin,
+                            Vertex destination,
+                            const std::vector<Distance>& distance,
+                            const std::vector<Vertex>& parent)
 {
     Path P;
 
     if (origin == destination)
     {
-        P.emplace_back(origin, 0);
+        P.emplace_front(origin, 0);
         return P;
     }
 
@@ -111,9 +111,10 @@ public:
     {
         if (dest == Graph::INVALID_VERTEX)
             dest = destination;
+
         assert(dest != Graph::INVALID_VERTEX);
-        return PathFromParentsAndDistances<Path>(
-          origin, dest, distance, parent);
+
+        return PathFromParents<Path>(origin, dest, distance, parent);
     }
 
     Vertex Origin() const { return origin; }
@@ -154,11 +155,15 @@ inline bool operator<(const DummyPathWithHeuristic& A,
 {
     if (A.cost_plus_heuristic() != B.cost_plus_heuristic())
         return A.cost_plus_heuristic() > B.cost_plus_heuristic();
+
     if (A.heuristic != B.heuristic)
         return A.heuristic > B.heuristic;
-    return A.last < B.last; // if same cost plus heuristic, I don't know.
+
+    // if same cost plus heuristic, whatever.
+    return A.last > B.last;
 }
 
+// Managed to make this not a template by having templated constructors.
 class AstarSearcher
 {
 public:
@@ -173,32 +178,35 @@ public:
         , distance(G.num_vertices(), INF)
         , parent(G.num_vertices(), Graph::INVALID_VERTEX)
     {
-        auto obj = [destination_](Vertex v) { return v == destination_; };
-        Init(G, obj, h);
+        auto objective = [destination_](Vertex v) { return v == destination_; };
+        Init(G, objective, h);
     }
 
-    // Finds a path from origin to some destination that satisfies predicte obj,
-    // using heuristic h
+    // Finds a path from origin to some destination that satisfies predicte
+    // objective, using heuristic h
     template <class Objective, class Heuristic>
-    AstarSearcher(const Graph& G, Vertex origin_, Objective obj, Heuristic h)
+    AstarSearcher(const Graph& G,
+                  Vertex origin_,
+                  Objective objective,
+                  Heuristic h)
         : origin(origin_)
         , destination(Graph::INVALID_VERTEX)
         , distance(G.num_vertices(), INF)
         , parent(G.num_vertices(), Graph::INVALID_VERTEX)
     {
-
-        Init(G, obj, h);
+        Init(G, objective, h);
     }
 
     template <class Path = std::deque<Graph::Neighbor>>
     Path GetPath() const
     {
-        return PathFromParentsAndDistances<Path>(
-          origin, destination, distance, parent);
+        return PathFromParents<Path>(origin, destination, distance, parent);
     }
 
     Vertex Origin() const { return origin; }
     Vertex Destination() const { return destination; }
+
+    Distance PathCost() const { return distance[destination]; }
 
     const std::vector<Distance>& Distances() const { return distance; }
     const std::vector<Vertex>& Parents() const { return parent; }
@@ -210,7 +218,7 @@ private:
     std::vector<Vertex> parent;
 
     template <class Heuristic, class Objective>
-    void Init(const Graph& G, Objective obj, Heuristic h)
+    void Init(const Graph& G, Objective objective, Heuristic h)
     {
         using std::cout;
         using std::endl;
@@ -228,7 +236,7 @@ private:
             if (P.cost > distance[P.last])
                 continue;
 
-            if (obj(P.last))
+            if (objective(P.last))
             {
                 destination = P.last;
                 return;
@@ -248,18 +256,19 @@ private:
     }
 };
 
-using namespace std;
-
-template <class T>
-std::ostream& operator<<(std::ostream& os, const std::vector<T>& A)
+template <class Objective,
+          class Heuristic,
+          class Path = std::deque<Graph::Neighbor>>
+Path Astar(const Graph& G, Vertex origin, Objective objective, Heuristic h)
 {
-    for (const auto& x : A)
-        os << x << ' ';
-    return os;
+    return AstarSearcher(G, origin, objective, h).GetPath<Path>();
 }
 
 int main()
 {
+    using std::cout;
+    using std::endl;
+
     Graph G(5);
     G.add_edge(0, 1, 5);
     G.add_edge(0, 2, 9);
@@ -267,24 +276,24 @@ int main()
     G.add_edge(2, 3, 4);
     G.add_edge(3, 4, 5);
 
-    Vertex from = 0;
-    Vertex to = 4;
+    Vertex s = 0;
+    Vertex t = 4;
 
     std::vector<int> heuristic = {5, 5, 4, 4, 0};
 
     cout << "Dijsktra produces the following path:\n\t";
-    for (auto t : Dijkstra(G, from, to))
+    for (auto e : Dijkstra(G, s, t))
     {
-        cout << "----(w = " << t.weight() << ")----> " << t.vertex << " ";
+        cout << "----(w = " << e.weight() << ")----> " << e.vertex << " ";
     }
     cout << endl << endl;
-    AstarSearcher A(
-      G, from, to, [&heuristic](Vertex v) { return heuristic[v]; });
+
+    auto h = [&heuristic](Vertex v) { return heuristic[v]; };
 
     cout << "A* produces the following path:\n\t";
-    for (auto t : A.GetPath())
+    for (auto e : Astar(G, s, t, h))
     {
-        cout << "----(w = " << t.weight() << ")----> " << t.vertex << " ";
+        cout << "----(w = " << e.weight() << ")----> " << e.vertex << " ";
     }
 
     return 0;
