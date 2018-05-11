@@ -1,0 +1,1 @@
+/bin/clang++  -O3 -DNDEBUG  -rdynamic CMakeFiles/number_theory.dir/src/NumberTheory.cpp.o  -o number_theory 

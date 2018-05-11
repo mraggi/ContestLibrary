@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/ConnectedComponents.hpp
+stack
+-
+Graph.hpp
+../include/Graph.hpp
+
+../include/Graph.hpp
+algorithm
+-
+cassert
+-
+iostream
+-
+vector
+-
+NaturalNumber.hpp
+../include/NaturalNumber.hpp
+
+../include/NaturalNumber.hpp
+algorithm
+-
+cassert
+-
+iostream
+-
+vector
+-
+
+/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/ConnectedComponents.cpp
+ConnectedComponents.hpp
+/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/ConnectedComponents.hpp
+

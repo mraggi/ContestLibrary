@@ -7,7 +7,7 @@ Encuentra las componentes conexas de un grafo. Regresa un vector cuyo $i$-ésimo
 - Tiempo de ejecución: $O(E)$.
 
 ```c++
-%%INCLUDE(GraphConnectedComponents.cpp)
+%%INCLUDE(ConnectedComponents.cpp)
 ```
 
 

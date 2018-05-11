@@ -1,0 +1,1 @@
+/bin/clang++  -O3 -DNDEBUG  -rdynamic CMakeFiles/shortest_path.dir/src/ShortestPaths.cpp.o  -o shortest_path 

@@ -1,0 +1,163 @@
+[
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/prime_sieve.dir/src/PrimeSieve.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/PrimeSieve.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/PrimeSieve.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/mst.dir/src/MinSpanningTree.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/MinSpanningTree.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/MinSpanningTree.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/rmq.dir/src/RangeMinQuery.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/RangeMinQuery.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/RangeMinQuery.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/number_theory.dir/src/NumberTheory.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/NumberTheory.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/NumberTheory.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/disjoint_intervals.dir/src/DisjointIntervals.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/DisjointIntervals.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/DisjointIntervals.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/shortest_path.dir/src/ShortestPaths.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/ShortestPaths.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/ShortestPaths.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/nn.dir/src/NaturalNumber.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/NaturalNumber.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/NaturalNumber.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/simplex.dir/src/LinearOptimizationSolver.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/LinearOptimizationSolver.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/LinearOptimizationSolver.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/longest_increasing_subsequence.dir/src/LongestIncreasingSubsequence.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/LongestIncreasingSubsequence.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/LongestIncreasingSubsequence.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/connected.dir/src/ConnectedComponents.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/ConnectedComponents.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/ConnectedComponents.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/disjoint_sets.dir/src/DisjointSets.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/DisjointSets.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/DisjointSets.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/bipartitematch.dir/src/BipartiteMatcher.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/BipartiteMatcher.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/BipartiteMatcher.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/tree.dir/src/Trees.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/Trees.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/Trees.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/lca.dir/src/LCA.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/LCA.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/LCA.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/max_flow.dir/src/MaxFlow.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/MaxFlow.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/MaxFlow.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/all_tests.dir/tests/main.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/main.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/main.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/all_tests.dir/tests/basic_tests.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/basic_tests.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/basic_tests.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/all_tests.dir/tests/disjoint_set_tests.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/disjoint_set_tests.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/disjoint_set_tests.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/all_tests.dir/tests/mst_tests.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/mst_tests.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/mst_tests.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/all_tests.dir/tests/connected_component_tests.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/connected_component_tests.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/connected_component_tests.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/all_tests.dir/tests/shortest_path_tests.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/shortest_path_tests.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/shortest_path_tests.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/all_tests.dir/tests/graph_creation_tests.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/graph_creation_tests.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/graph_creation_tests.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/all_tests.dir/tests/tree_tests.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/tree_tests.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/tree_tests.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/all_tests.dir/tests/rmq_tests.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/rmq_tests.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/rmq_tests.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/all_tests.dir/tests/bipartite_tests.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/bipartite_tests.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/bipartite_tests.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/all_tests.dir/tests/bipartite_matching_tests.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/bipartite_matching_tests.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/bipartite_matching_tests.cpp"
+},
+
+{
+  "directory": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/build",
+  "command": "/bin/clang++   -I../include -I../include/extra  -O3 -DNDEBUG   -std=gnu++14 -o CMakeFiles/all_tests.dir/tests/number_theory_tests.cpp.o -c /home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/number_theory_tests.cpp",
+  "file": "/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/tests/number_theory_tests.cpp"
+}
+]

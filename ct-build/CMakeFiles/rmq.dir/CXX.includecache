@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/RangeMinQuery.hpp
+algorithm
+-
+cassert
+-
+cmath
+-
+iostream
+-
+numeric
+-
+vector
+-
+
+/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/RangeMinQuery.cpp
+RangeMinQuery.hpp
+/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/RangeMinQuery.hpp
+

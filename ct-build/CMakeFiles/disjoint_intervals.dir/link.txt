@@ -1,0 +1,1 @@
+/bin/clang++  -O3 -DNDEBUG  -rdynamic CMakeFiles/disjoint_intervals.dir/src/DisjointIntervals.cpp.o  -o disjoint_intervals 

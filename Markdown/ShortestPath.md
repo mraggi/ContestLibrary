@@ -8,7 +8,7 @@ Se incluyen dos algoritmos: Dijkstra y A*.
 
 
 ```c++
-%%INCLUDE(ShortestPath.cpp)
+%%INCLUDE(ShortestPaths.cpp)
 ```
 
 

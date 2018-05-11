@@ -1,0 +1,1 @@
+/bin/clang++  -O3 -DNDEBUG  -rdynamic CMakeFiles/bipartitematch.dir/src/BipartiteMatcher.cpp.o  -o bipartitematch 

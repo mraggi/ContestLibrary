@@ -1,0 +1,1 @@
+/bin/clang++  -O3 -DNDEBUG  -rdynamic CMakeFiles/max_flow.dir/src/MaxFlow.cpp.o  -o max_flow 

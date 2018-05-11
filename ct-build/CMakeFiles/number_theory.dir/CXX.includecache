@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/NumberTheory.hpp
+algorithm
+-
+cassert
+-
+cmath
+-
+iostream
+-
+numeric
+-
+vector
+-
+
+/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/NumberTheory.cpp
+NumberTheory.hpp
+/home/mraggi/Dropbox/sources/Mathematics/ContestLibrary/src/NumberTheory.hpp
+
