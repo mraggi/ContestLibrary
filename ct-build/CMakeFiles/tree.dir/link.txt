@@ -1,1 +1,0 @@
-/bin/clang++  -O3 -DNDEBUG  -rdynamic CMakeFiles/tree.dir/src/Trees.cpp.o  -o tree 

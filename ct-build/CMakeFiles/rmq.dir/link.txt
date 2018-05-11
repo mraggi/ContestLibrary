@@ -1,1 +1,0 @@
-/bin/clang++  -O3 -DNDEBUG  -rdynamic CMakeFiles/rmq.dir/src/RangeMinQuery.cpp.o  -o rmq 

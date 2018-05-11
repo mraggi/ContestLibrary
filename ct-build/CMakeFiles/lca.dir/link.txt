@@ -1,1 +1,0 @@
-/bin/clang++  -O3 -DNDEBUG  -rdynamic CMakeFiles/lca.dir/src/LCA.cpp.o  -o lca 

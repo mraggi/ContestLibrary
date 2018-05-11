@@ -1,1 +1,0 @@
-/bin/clang++  -O3 -DNDEBUG  -rdynamic CMakeFiles/simplex.dir/src/LinearOptimizationSolver.cpp.o  -o simplex 
