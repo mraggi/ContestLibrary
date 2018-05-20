@@ -1,4 +1,4 @@
 build*
-.kdev4
-ct-build
+*.kdev4
+ct-build*
 Markdown/tmp
