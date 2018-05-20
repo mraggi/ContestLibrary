@@ -1,5 +1,5 @@
 project(contestlibrary)
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
@@ -47,7 +47,8 @@ if (${BUILD_TESTS})
 										tests/rmq_tests.cpp
 										tests/bipartite_tests.cpp
 										tests/bipartite_matching_tests.cpp
-										tests/number_theory_tests.cpp)
+										tests/number_theory_tests.cpp
+										tests/natural_number_tests.cpp)
 	target_link_libraries(${PROJECT_TEST_NAME} ${GTEST_BOTH_LIBRARIES} Threads::Threads)
 	add_test(AllTests ${PROJECT_TEST_NAME})
 endif()

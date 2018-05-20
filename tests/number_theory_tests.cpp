@@ -43,7 +43,7 @@ TEST(NumberTheory, GCD)
     for (int i = 0; i < 1000; ++i)
     {
         const ll MOD = 1000000007LL;
-        ll a = random_int(1LL, MOD);
+        ll a = random_int<ll>(1, MOD);
         ll b = mod_inverse(a, MOD);
         ASSERT_EQ(modulo(a*b, MOD), 1);
     }
