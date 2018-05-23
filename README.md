@@ -15,12 +15,10 @@ Requires:
 - pandoc
 - clang and clang-format
 - fd
-- pdfunite
+- latex
 - ?
 
 ## TODO:
-
-First, we need unit tests. Everything has been unit-tested, but in other projects.
 
 ### Already programmed, needs cleanup, etc.
 - Geometry: Points, lines, segments, convex hulls, etc.
@@ -29,7 +27,7 @@ First, we need unit tests. Everything has been unit-tested, but in other project
 - Polynomials, maybe fourier transforms
 - Simple matrices
 - Splay trees ("ropes")
-- String stuff: Suffix trees, Rabin Karp, etc.
+- String stuff: Suffix trees, etc.
 
 ### Not yet programmed:
 - Segment Trees
