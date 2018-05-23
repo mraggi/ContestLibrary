@@ -33,7 +33,7 @@ before_script:
 
 script:
   - cd $PARENTDIR/build
-  - cmake -DCMAKE_BUILD_TYPE=Coverage -DBUILD_VISUALIZER=OFF $PARENTDIR
+  - cmake -DCMAKE_BUILD_TYPE=Coverage $PARENTDIR
   - make
   - make gtest
   - make coverage
