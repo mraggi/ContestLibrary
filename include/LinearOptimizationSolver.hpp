@@ -41,7 +41,7 @@ struct LPSolver
     Matrix D;
 
     LPSolver(const Matrix& A, const Row& b, const Row& c)
-        : m(b.size()), n(c.size()), N(n + 1), B(m), D(m + 2, Row(n + 2))
+        : m(b.size()), n(c.size()), B(m), N(n + 1), D(m + 2, Row(n + 2))
     {
         for (int i = 0; i < m; ++i)
         {

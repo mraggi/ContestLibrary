@@ -25,6 +25,7 @@ cat Content.md \
     BipartiteGraph.md \
     BipartiteMatching.md \
     MaxFlow.md \
+    RabinKarp.md \
     > OneForAll.md
 sed -i 's/^## \(.*\)/\\newpage\n## \1/g' OneForAll.md
 # tail -n +2 OneForAll.md > OFA.md

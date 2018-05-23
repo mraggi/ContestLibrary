@@ -1,3 +1,4 @@
+#include "BipartiteGraph.hpp"
 #include "BipartiteMatcher.hpp"
 #include "CommonGraphs.hpp"
 #include "Probability.hpp"
@@ -6,6 +7,7 @@
 #include "external/bipartite_matching.hpp"
 #include <gtest/gtest.h>
 #include <iostream>
+#include <unordered_set>
 
 using Vertex = BipartiteGraph::Vertex;
 
@@ -27,6 +29,19 @@ void CheckMatching(const BipartiteGraph& G, int expected_size)
         }
     }
     ASSERT_EQ(matches.size(), expected_size);
+
+    auto edges = M.Edges();
+    auto order = [](const Graph::Edge& A, const Graph::Edge& B) {
+        if (A.weight() != B.weight())
+            return A.weight() < B.weight();
+        if (A.from != B.from)
+            return A.from < B.from;
+        return A.to < B.to;
+    };
+
+    std::set<Graph::Edge, decltype(order)> S(edges.begin(), edges.end(), order);
+
+    ASSERT_EQ(S.size(), matches.size());
 }
 
 TEST(BipartiteMatching, Small22)
@@ -66,45 +81,6 @@ TEST(BipartiteMatching, Small55)
                  {4, 3},
                  {4, 4}});
     CheckMatching(B, 4);
-}
-
-TEST(BipartiteMatching, PermutationGraph)
-{
-    double total_time = 0.0;
-    long num = 10;
-    for (int i = 0; i < num; ++i)
-    {
-        int n = random_int(1, 20);
-        int m = random_int(1, 20);
-        int degreeX = random_int(1, m + 1);
-
-        if (n > m)
-            std::swap(n, m);
-
-        BipartiteGraph B(n, m);
-
-        std::vector<Vertex> Y = random_order(B.verticesY());
-
-        // 		std::cout << "Y = " << Y << std::endl;
-        for (int x = 0; x < n; ++x)
-        {
-            auto Bvert = B.verticesY();
-            std::vector<Vertex> Bvertvec(Bvert.begin(), Bvert.end());
-            auto neighbors_of_x = random_sample(Bvertvec, degreeX);
-
-            if (std::count(
-                  neighbors_of_x.begin(), neighbors_of_x.end(), Y[x]) == 0)
-                neighbors_of_x.push_back(Y[x]);
-
-            for (auto y : neighbors_of_x)
-                B.add_edge(x, y);
-        }
-
-        Chronometer C;
-        CheckMatching(B, n);
-        total_time += C.Peek();
-    }
-    // 	std::cout << "AVG TIME: " << total_time/num << "s" << std::endl;
 }
 
 TEST(BipartiteMatching, vsJaheup)
