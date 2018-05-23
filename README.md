@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/mraggi/ContestLibrary.svg?branch=master)](https://travis-ci.org/mraggi/ContestLibrary)
+[![Coverage Status](https://coveralls.io/repos/github/mraggi/ContestLibrary/badge.svg?branch=master)](https://coveralls.io/github/mraggi/ContestLibrary?branch=master)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mraggi/ContestLibrary/blob/master/LICENSE)
+
 # Algorithms for Contests
 
 A collection of useful algorithms to use in contests such as the ACM ICPC, hackerrank, etc.
