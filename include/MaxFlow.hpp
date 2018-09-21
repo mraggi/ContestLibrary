@@ -23,7 +23,8 @@ struct Edge
 class PushRelabel
 {
 public:
-    PushRelabel(ll N) : N(N), G(N), excess(N), dist(N), active(N), count(2*N)
+    explicit PushRelabel(ll N)
+        : N(N), G(N), excess(N), dist(N), active(N), count(2*N)
     {}
 
     void AddEdge(ll from, ll to, ll cap)

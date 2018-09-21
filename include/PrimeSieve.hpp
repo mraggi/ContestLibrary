@@ -308,7 +308,7 @@ inline bool is_prime(ll n, const Primes& P)
 class EulerPhi
 {
 public:
-    EulerPhi(const Primes& P) : m_phi(P.up_to() + 1)
+    explicit EulerPhi(const Primes& P) : m_phi(P.up_to() + 1)
     {
         m_phi[0] = 0;
         m_phi[1] = 1;

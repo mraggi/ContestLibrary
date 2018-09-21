@@ -32,16 +32,7 @@ std::vector<T> Convert(const std::vector<U>& G)
 template <class T>
 std::ostream& operator<<(std::ostream& os, const std::vector<T>& V)
 {
-    if (V.empty())
-        return os;
-    auto it = V.begin();
-    os << *it;
-    ++it;
-    for (; it != V.end(); ++it)
-    {
-        os << ' ' << *it;
-    }
-
+    std::copy(V.begin(), V.end(), std::ostream_iterator<T>(os, ' '));
     return os;
 }
 

@@ -16,6 +16,7 @@ cat Content.md \
     RangeMinQuery.md \
     LinearProgramming.md \
     NaturalNumber.md \
+    GameTheory.md \
     Graph.md \
     ConnectedComponents.md \
     Trees.md \

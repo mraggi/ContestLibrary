@@ -10,7 +10,7 @@ public:
     using Vertex = BipartiteGraph::Vertex;
     using Edge = Graph::Edge;
 
-    BipartiteMatcher(const BipartiteGraph& G)
+    explicit BipartiteMatcher(const BipartiteGraph& G)
         : m_Xmatches(G.num_verticesX(), -1), m_Ymatches(G.num_verticesY(), -1)
     {
         CreateInitialMatching(G);
