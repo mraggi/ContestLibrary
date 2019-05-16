@@ -14,6 +14,7 @@ cat Content.md \
     DisjointSets.md \
     DisjointIntervals.md \
     RangeMinQuery.md \
+    Fenwick.md \
     LinearProgramming.md \
     NaturalNumber.md \
     GameTheory.md \
